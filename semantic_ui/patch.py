@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 from django.conf import settings
 from crispy_forms import layout
 
