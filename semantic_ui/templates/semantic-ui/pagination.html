@@ -1,0 +1,31 @@
+{% with pagination_url=pagination_url|default:"?" %}
+
+    <div class="ui pagination menu">
+
+        {% if current_page != 1 %}
+            <a class="item icon" href="{{ pagination_url }}{{ parameter_name }}=1"><i class="angle double left icon"></i></a>
+        {% endif %}
+
+        {% if pages_back %}
+            <a class="item icon" href="{{ pagination_url }}{{ parameter_name }}={{ pages_back }}"><i class="angle left icon"></i></a>
+        {% endif %}
+
+        {% for p in pages_shown %}
+            {% if current_page == p %}
+                <div class="item active">{{ p }}</div>
+            {% else %}
+                <a class="item" href="{{ pagination_url }}{{ parameter_name }}={{ p }}">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if pages_forward %}
+            <a class="item icon" href="{{ pagination_url }}{{ parameter_name }}={{ pages_forward }}"><i class="angle right icon"></i></a>
+        {% endif %}
+
+        {% if current_page != num_pages %}
+            <a class="item icon" href="{{ pagination_url }}{{ parameter_name }}={{ num_pages }}"><i class="angle double right icon"></i></a>
+        {% endif %}
+
+    </div>
+
+{% endwith %}
